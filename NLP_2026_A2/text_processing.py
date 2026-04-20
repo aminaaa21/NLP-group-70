@@ -144,3 +144,32 @@ print_frequent_tag(brown_corpus, category='adventure')
 print_frequent_tag(brown_corpus, category='humor')
 
 # =========== STEP 4 ===========
+
+def histogram_frequency_words(input_corpus, category:str='None'):
+    if category != 'None':
+        input_words = input_corpus.words(categories=category)
+    else:
+        input_words = input_corpus.words()
+
+    freq = Counter(input_words)
+    word_with_freq = freq.most_common()
+    sorted_freqs = [freq for _, freq in word_with_freq]
+
+    # regular plot
+    plt.plot(range(1, len(sorted_freqs) + 1), sorted_freqs)
+    plt.xlabel('Rank')
+    plt.ylabel('Frequency')
+    plt.xlim(0, 1000) # hard to see detail otherwise
+    plt.title('Zipfs Law - Brown Corpus')
+    plt.show()
+
+    # log-log plot
+    plt.plot(range(1, len(sorted_freqs) + 1), sorted_freqs)
+    plt.xscale('log')
+    plt.yscale('log')
+    plt.xlabel('Rank (log)')
+    plt.ylabel('Frequency (log)')
+    plt.title('Zipfs Law - Brown Corpus (log-log)')
+    plt.show()
+
+histogram_frequency_words(brown_corpus)
