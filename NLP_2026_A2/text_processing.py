@@ -4,15 +4,13 @@
 
 # Import packages
 import nltk
-from nltk import NLTKWordTokenizer
+from nltk import NLTKWordTokenizer, WordNetLemmatizer
 import spacy
 from collections import Counter
 import itertools
-
+import matplotlib.pyplot as plt
 
 # Load Brown language model
-# nlp = spacy.load('nltk.corpus.brown')
-
 nltk.download('brown')
 brown_corpus = nltk.corpus.brown
 browns_words = nltk.corpus.brown.words()
@@ -62,6 +60,7 @@ def print_number_of_types(sents):
     tokenizer = NLTKWordTokenizer()
     tokenised_text = tokenizer.tokenize_sents(sents_list)
     # flatten to single list
+    # itertool.chain idea from user Shawn Chin on stackoverflow page 'How do I make a flat list out of a list of lists?'
     flatten = list(itertools.chain(*tokenised_text))
     print('Number of types in text: ', len(set(flatten)))
 
@@ -105,9 +104,43 @@ def print_avg_length_of_words(input_corpus: list[str], category:str = 'None') ->
     for word in input_words:
         total_length += len(word)
     avg_length = total_length / len(input_words)
-    print(f'\n average lenght of words in category: {category} \n', avg_length)
+    print(f'\n average length of words in category {category}:', avg_length)
 
+
+print_avg_length_of_words(brown_corpus)
+print_avg_length_of_words(brown_corpus, category='adventure')
+print_avg_length_of_words(brown_corpus, category='humor')
 
 #  (vi) number of lemmas
-def print_number_of_lemmas():
-    return None
+def print_number_of_lemmas(input_corpus, category: str = 'None'):
+    if category != 'None':
+        input_words = input_corpus.words(categories=category)
+    else:
+        input_words = input_corpus.words()
+    lemmatiser = WordNetLemmatizer()
+    lemmas = [lemmatiser.lemmatize(word) for word in input_words]
+    print(f'Number of lemmas in category: {category}: ', len(set(lemmas)))
+
+print_number_of_lemmas(brown_corpus)
+print_number_of_lemmas(brown_corpus, category='adventure')
+print_number_of_lemmas(brown_corpus, category='humor')
+
+# =========== STEP 3 ===========
+# tagged words
+
+def print_frequent_tag(input_corpus: list[str], category:str = 'None') -> None:
+    if category != 'None':
+        input_words = input_corpus.tagged_words(categories=category)
+    else:
+        input_words = input_corpus.tagged_words()
+
+    tags = [word[1] for word in input_words]
+    freq = Counter(tags)
+    sorted_tags = sorted(list(set(tags)), key=lambda x: -freq[x])
+    print(f'\n 10 most frequent tags in category: {category} \n', sorted_tags[:10])
+
+print_frequent_tag(brown_corpus)
+print_frequent_tag(brown_corpus, category='adventure')
+print_frequent_tag(brown_corpus, category='humor')
+
+# =========== STEP 4 ===========
