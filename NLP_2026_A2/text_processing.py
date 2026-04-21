@@ -322,3 +322,8 @@ print_number_of_tokens(bangla_sents)
 print_number_of_types(bangla_sents)
 print_avg_words_per_sentence(bangla_sents)
 print('########')
+print('########')
+print('########')
+
+
+print(brown_corpus.words())
