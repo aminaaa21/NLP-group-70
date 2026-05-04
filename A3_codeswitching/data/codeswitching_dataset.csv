@@ -1,5 +1,5 @@
 id,text,pair,languages,created_by
-1,yaar I literally samajh nahi aaya kuch bhi in that lecture,english-urdu,"['english', 'urdu']",Amina
+1,yaar mujhe literally kuch bhi nahi samajh aaya in that lecture,english-hindi,"['english', 'hindi']",Amina
 2,"ik snap het gewoon niet man, deze assignment maakt absoluut geen sense",english-dutch,"['english', 'dutch']",Gileesa
 3,"het is echt too much, I don't think we'll finish this op tijd",english-dutch,"['english', 'dutch']",Gileesa
 4,"gezellig was het last night, we should definitely do this nog een keertje",english-dutch,"['english', 'dutch']",Gileesa
@@ -9,7 +9,19 @@ id,text,pair,languages,created_by
 8,"calm down joh, je maakt het veel te complicated",english-dutch,"['english', 'dutch']",Gileesa
 9,"I'm going to do boodschappen, wat voor ingredients heb je nodig voor dinner?",english-dutch,"['english', 'dutch']",Gileesa
 10,"ik ben echt stressed voor mijn exam, maar ik moet mijn drivers-license halen.",english-dutch,"['english', 'dutch']",Gileesa
-10,"ik heb al voor a lot of part-time jobs applied, maar ik wordt steeds niet gehired.",english-dutch,"['english', 'dutch']",Gileesa
-11,de grading van deze assignment vind ik eigenlijk really unfair.,english-dutch,"['english', 'dutch']",Gileesa
-12,ik koop mijn birthday gifts altijd bij de bookstore.,english-dutch,"['english', 'dutch']",Gileesa
-13,Tijdens mijn internship had ik een co-worker die echt veel yapte,english-dutch,"['english', 'dutch']",Gileesa
+11,"ik heb al voor a lot of part-time jobs applied, maar ik wordt steeds niet gehired.",english-dutch,"['english', 'dutch']",Gileesa
+12,de grading van deze assignment vind ik eigenlijk really unfair.,english-dutch,"['english', 'dutch']",Gileesa
+13,ik koop mijn birthday gifts altijd bij de bookstore.,english-dutch,"['english', 'dutch']",Gileesa
+14,Tijdens mijn internship had ik een co-worker die echt veel yapte,english-dutch,"['english', 'dutch']",Gileesa
+15,"Bhai I'm so stressed, mere itne saare deadlines hain this week",english-hindi,"['english', 'hindi']",Amina
+16,"Unhone mujhe ghost kar diya, I can't believe it",english-hindi,"['english', 'hindi']",Amina
+17,"Tu bas relax kar, it'll be fine",english-hindi,"['english', 'hindi']",Amina
+18,"us ne mujhe last minute pe cancel kar diya, so rude",english-hindi,"['english', 'hindi']",Amina
+19,"uye outfit is so cute, kahan se liya?",english-hindi,"['english', 'hindi']",Amina
+20,"wo banda itna fake hai, I don't trust him at all",english-hindi,"['english', 'hindi']",Amina
+21,"Itna overthink mat karo, it'll all work out",english-hindi,"['english', 'hindi']",Amina
+22,"mein ne groceries order kar di hain, they'll arrive in an hour",english-hindi,"['english', 'hindi']",Amina
+23,"mujhe na actually ye show bohot pasand hai, it's so good",english-hindi,"['english', 'hindi']",Amina
+24,"mujhe samajh nahi aata why people always leave their dishes in the sink, itna difficult hai kya clean karna?",english-hindi,"['english', 'hindi']",Amina
+25,"main supermarket gayi thi just milk lene ke liye and I ended up spending like 30 euros, har baar aisa hota hai",english-hindi,"['english', 'hindi']",Amina
+26,"aaj gym jaana tha but I kept snoozing my alarm, ab mujhe guilty feel ho raha hai poora din",english-hindi,"['english', 'hindi']",Amina
