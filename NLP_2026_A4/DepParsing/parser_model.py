@@ -126,7 +126,8 @@ class ParserModel(nn.Module):
         ###     View: https://pytorch.org/docs/stable/tensors.html#torch.Tensor.view
         ###     Flatten: https://pytorch.org/docs/stable/generated/torch.flatten.html
 
-        
+        x = self.embeddings[w]
+        x = x.view(w.shape[0], -1)
 
         ### END YOUR CODE
         return x
