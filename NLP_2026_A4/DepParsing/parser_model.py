@@ -163,8 +163,7 @@ class ParserModel(nn.Module):
         ### Please see the following docs for support:
         ###     Matrix product: https://pytorch.org/docs/stable/torch.html#torch.matmul
         ###     ReLU: https://pytorch.org/docs/stable/nn.html?highlight=relu#torch.nn.functional.relu
-
-
+       
         ### END YOUR CODE
         return logits
 
