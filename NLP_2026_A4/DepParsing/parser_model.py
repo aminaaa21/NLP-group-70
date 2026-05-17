@@ -163,7 +163,20 @@ class ParserModel(nn.Module):
         ### Please see the following docs for support:
         ###     Matrix product: https://pytorch.org/docs/stable/torch.html#torch.matmul
         ###     ReLU: https://pytorch.org/docs/stable/nn.html?highlight=relu#torch.nn.functional.relu
-       
+
+        x = self.embedding_lookup(w)
+
+        # h = ReLU(xW + b1)
+        hidden = torch.matmul(x, self.embed_to_hidden_weight)
+        hidden = hidden + self.embed_to_hidden_bias
+        hidden = F.relu(hidden)
+
+        # Dropout
+        hidden = self.dropout(hidden)
+
+        # l = hU + b2
+        logits = torch.matmul(hidden, self.hidden_to_logits_weight)
+        logits = logits + self.hidden_to_logits_bias
         ### END YOUR CODE
         return logits
 
