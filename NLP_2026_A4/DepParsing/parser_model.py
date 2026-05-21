@@ -72,8 +72,28 @@ class ParserModel(nn.Module):
         ### 
         ### See the PDF for hints.
 
+        # W
+        input_size = self.n_features * self.embed_size
+        weight_tensor = torch.empty(input_size, self.hidden_size)
+        self.embed_to_hidden_weight = nn.Parameter(weight_tensor)
+        nn.init.xavier_uniform_(self.embed_to_hidden_weight)
 
+        #b1
+        bias_tensor = torch.empty(self.hidden_size)
+        self.embed_to_hidden_bias = nn.Parameter(bias_tensor)
+        nn.init.uniform_(self.embed_to_hidden_bias)
 
+        self.dropout = nn.Dropout(self.dropout_prob)
+
+        # U
+        hidden_weight_tensor = torch.empty(hidden_size, n_classes)
+        self.hidden_to_logits_weight = nn.Parameter(hidden_weight_tensor)
+        nn.init.xavier_uniform_(self.hidden_to_logits_weight)
+
+        # b2
+        logits_bias_tensor = torch.empty(self.n_classes)
+        self.hidden_to_logits_bias = nn.Parameter(logits_bias_tensor)
+        nn.init.uniform_(self.hidden_to_logits_bias)
 
         ### END YOUR CODE
 
@@ -106,7 +126,8 @@ class ParserModel(nn.Module):
         ###     View: https://pytorch.org/docs/stable/tensors.html#torch.Tensor.view
         ###     Flatten: https://pytorch.org/docs/stable/generated/torch.flatten.html
 
-
+        x = self.embeddings[w]
+        x = x.view(w.shape[0], -1)
 
         ### END YOUR CODE
         return x
@@ -143,7 +164,19 @@ class ParserModel(nn.Module):
         ###     Matrix product: https://pytorch.org/docs/stable/torch.html#torch.matmul
         ###     ReLU: https://pytorch.org/docs/stable/nn.html?highlight=relu#torch.nn.functional.relu
 
+        x = self.embedding_lookup(w)
 
+        # h = ReLU(xW + b1)
+        hidden = torch.matmul(x, self.embed_to_hidden_weight)
+        hidden = hidden + self.embed_to_hidden_bias
+        hidden = F.relu(hidden)
+
+        # Dropout
+        hidden = self.dropout(hidden)
+
+        # l = hU + b2
+        logits = torch.matmul(hidden, self.hidden_to_logits_weight)
+        logits = logits + self.hidden_to_logits_bias
         ### END YOUR CODE
         return logits
 
